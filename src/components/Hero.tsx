@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
               <div className="absolute inset-4 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl">
                 <div className="w-full h-full rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
                   <span className="text-4xl md:text-5xl font-bold text-white">
-                    <img src="public/lamine.JPG" alt="photo profil" />
+                    <img src="/public/lamine.JPG" alt="" />
                   </span>
                 </div>
               </div>
