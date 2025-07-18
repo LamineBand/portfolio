@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
               <div className="absolute inset-4 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl">
                 <div className="w-full h-full rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
                   <span className="text-4xl md:text-5xl font-bold text-white">
-                    <img src="/public/imgProjet/lamine.jpg" alt="" />
+                    <img src="/imgProjet/lamine.jpg" alt="photo profil" />
                   </span>
                 </div>
               </div>
@@ -129,7 +129,7 @@ const Hero: React.FC = () => {
             <a
               href="/cvbdg.pdf"
               download
-              className="btn-primary flex items-center space-x-2"
+              className="group bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-purple-500/25 flex items-center justify-center space-x-3"
             >
               <Download className="w-4 h-4" />
               <span>Télécharger mon CV</span>
