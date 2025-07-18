@@ -87,7 +87,7 @@ const Header: React.FC = () => {
           <div className="block md:hidden flex items-center space-x-2">
             {/**<ThemeToggle /> */}
             <button
-              style={{ backgroundColor: "white" }}
+              style={{ backgroundColor: "white", marginRight: "0.5rem" }}
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
