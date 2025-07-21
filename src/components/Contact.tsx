@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Mail, MapPin, Phone, Send, Github, Linkedin } from "lucide-react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -9,19 +10,31 @@ const Contact: React.FC = () => {
     subject: "",
     message: "",
   });
+  const [Message, setMessage] = useState("");
+  const [loader, setloader] = useState(false);
 
   async function EnvoieInfo() {
     try {
+      setloader(true);
+      setMessage("");
       const res = await axios.post(
         "http://localhost:3005/api/sendmail",
         formData
       );
       if (res && res.data.mess === "ok") {
-        console.log("message envoyer au back-end");
+        setloader(false);
+
+        document.getElementById("toast")?.click();
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        console.log("envoie reussi");
       } else {
+        setloader(false);
+        setMessage("L'envoie de votre Email a échouer");
         console.log("le back a échouer");
       }
     } catch (error) {
+      setloader(false);
+      setMessage("L'envoie de votre Email a échouer");
       console.log("erreur d'envoie au serveur =");
       console.log(error);
     }
@@ -32,7 +45,6 @@ const Contact: React.FC = () => {
     // console.log("Form submitted:", formData);
     //alert("Message envoyé avec succès!");
     EnvoieInfo();
-    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   const handleChange = (
@@ -44,11 +56,26 @@ const Contact: React.FC = () => {
     });
   };
 
+  const handleClick = () => {
+    toast.success("Email envoyer avec succès !");
+  };
   return (
     <section
       id="contact"
       className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-800"
     >
+      {/* Conteneur de toast */}
+      <button className=" d-none" id="toast" onClick={handleClick}></button>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="colored"
+      />
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -169,7 +196,7 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors text-sm sm:text-base"
                     placeholder="Votre nom"
                   />
                 </div>
@@ -187,7 +214,7 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors text-sm sm:text-base"
                     placeholder="votre@email.com"
                   />
                 </div>
@@ -207,7 +234,7 @@ const Contact: React.FC = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors text-sm sm:text-base"
                   placeholder="Objet de votre message"
                 />
               </div>
@@ -226,19 +253,41 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors resize-none text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors resize-none text-sm sm:text-base"
                   placeholder="Décrivez votre projet ou votre message..."
                 />
               </div>
 
-              <button
-                type="submit"
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 sm:py-3 px-4 rounded-lg transition-colors duration-200 text-sm sm:text-lg flex items-center justify-center space-x-2"
-              >
-                <Send className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span>Envoyer le message</span>
-              </button>
+              {loader ? (
+                <button
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 sm:py-3 px-4 rounded-lg transition-colors duration-200 text-sm sm:text-lg flex items-center justify-center space-x-2"
+                  type="button"
+                  disabled
+                >
+                  <span
+                    className="spinner-border spinner-border-sm"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="visually-hidden" role="status">
+                    Envoyer de message en cours...
+                  </span>
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 sm:py-3 px-4 rounded-lg transition-colors duration-200 text-sm sm:text-lg flex items-center justify-center space-x-2"
+                >
+                  <Send className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span>Envoyer le message</span>
+                </button>
+              )}
             </form>
+
+            <center>
+              <div className="mt-3 ">
+                <span style={{ color: "red" }}> {Message} </span>
+              </div>
+            </center>
           </div>
         </div>
       </div>
