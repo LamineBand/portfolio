@@ -18,7 +18,7 @@ const Contact: React.FC = () => {
       setloader(true);
       setMessage("");
       const res = await axios.post(
-        "https://backend-portfolio-tau-six.vercel.app/api/sendmail",
+        "https://backend-portfolio-tau-six.vercel.app/",
         formData
       );
       if (res && res.data.mess === "ok") {
