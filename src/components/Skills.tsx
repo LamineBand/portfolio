@@ -7,32 +7,32 @@ const Skills: React.FC = () => {
       title: "Front-End",
       icon: <Code className="w-8 h-8 text-blue-600" />,
       skills: [
-        { name: "React", level: 90 },
-        { name: "Next.js", level: 85 },
-        { name: "TypeScript", level: 80 },
+        { name: "React" },
+        { name: "Next.js" },
+        { name: "TypeScript" },
         //{ name: "Tailwind CSS", level: 95 },
-        { name: "JavaScript", level: 90 },
-        { name: "HTML/CSS", level: 95 },
+        { name: "JavaScript" },
+        { name: "HTML/CSS" },
       ],
     },
     {
       title: "Back-End",
       icon: <Server className="w-8 h-8 text-green-600" />,
       skills: [
-        { name: "Node.js", level: 85 },
-        { name: "Express.js", level: 80 },
-        { name: "MongoDB", level: 85 },
-        { name: "MySQL", level: 80 },
+        { name: "Node.js" },
+        { name: "Express.js" },
+        { name: "MongoDB" },
+        { name: "MySQL" },
         // { name: "PostgreSQL", level: 75 },
-        { name: "Firebase", level: 80 },
+        { name: "Firebase" },
       ],
     },
     {
       title: "Mobile",
       icon: <Smartphone className="w-8 h-8 text-purple-600" />,
       skills: [
-        { name: "React Native", level: 85 },
-        { name: "Capacitor", level: 80 },
+        { name: "React Native" },
+        { name: "Capacitor" },
         //  { name: "Expo", level: 75 },
         // { name: "Flutter", level: 60 }
       ],
@@ -41,11 +41,11 @@ const Skills: React.FC = () => {
       title: "Outils",
       icon: <Tools className="w-8 h-8 text-orange-600" />,
       skills: [
-        { name: "Git", level: 90 },
+        { name: "Git" },
         // { name: "Docker", level: 70 },
         // { name: "Figma", level: 85 },
-        { name: "VS Code", level: 95 },
-        { name: "Postman", level: 85 },
+        { name: "VS Code" },
+        { name: "Postman" },
       ],
     },
   ];
@@ -84,14 +84,11 @@ const Skills: React.FC = () => {
                         {skill.name}
                       </span>
                       <span className="text-sm text-gray-500 dark:text-gray-400">
-                        {skill.level}%
+                        {/*skill.level  pour div suivant : style={{ width: `${skill.level}%` }}*/}
                       </span>
                     </div>
                     <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                      <div
-                        className="bg-gradient-to-r from-indigo-500 to-purple-600 h-2 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
+                      <div className="bg-gradient-to-r from-indigo-500 to-purple-600 h-2 rounded-full transition-all duration-1000 ease-out"></div>
                     </div>
                   </div>
                 ))}
