@@ -53,7 +53,12 @@ const Skills: React.FC = () => {
   return (
     <section id="skills" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div
+          className="text-center mb-16"
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+        >
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Compétences techniques
           </h2>
@@ -68,6 +73,7 @@ const Skills: React.FC = () => {
             <div
               key={index}
               className="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl hover:shadow-lg transition-shadow"
+              data-aos="fade-down"
             >
               <div className="flex items-center space-x-3 mb-6">
                 {category.icon}

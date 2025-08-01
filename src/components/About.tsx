@@ -38,7 +38,12 @@ const About: React.FC = () => {
   return (
     <section id="about" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div
+          className="text-center mb-16"
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+        >
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             À propos de moi
           </h2>
@@ -52,7 +57,13 @@ const About: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Contenu principal */}
           <div className="space-y-6">
-            <div className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-gray-800 dark:to-indigo-900 p-6 rounded-2xl">
+            {/* Mon parcours */}
+            <div
+              className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-gray-800 dark:to-indigo-900 p-6 rounded-2xl"
+              data-aos="flip-left"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000"
+            >
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                 Mon parcours
               </h3>
@@ -66,7 +77,12 @@ const About: React.FC = () => {
             </div>
 
             {/* Stack technique */}
-            <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl">
+            <div
+              className="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl"
+              data-aos="flip-left"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="3000"
+            >
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 Technologies principales
               </h3>
@@ -97,6 +113,10 @@ const About: React.FC = () => {
                 <div
                   key={skill.name}
                   className="flex items-center space-x-2 bg-indigo-100 dark:bg-indigo-900 px-4 py-2 rounded-full"
+                  data-aos="fade-zoom-in"
+                  data-aos-easing="ease-in-back"
+                  data-aos-delay="500"
+                  data-aos-offset="0"
                 >
                   {skill.icon}
                   <span className="text-sm font-medium text-indigo-800 dark:text-indigo-200">
@@ -113,6 +133,7 @@ const About: React.FC = () => {
               <div
                 key={index}
                 className="flex items-start space-x-4 p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+                data-aos="flip-down"
               >
                 <div className="flex-shrink-0">{achievement.icon}</div>
                 <div>

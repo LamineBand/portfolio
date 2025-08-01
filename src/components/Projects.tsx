@@ -94,7 +94,12 @@ const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div
+          className="text-center mb-16"
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+        >
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Mes projets
           </h2>
@@ -109,6 +114,7 @@ const Projects: React.FC = () => {
             <div
               key={project.id}
               className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              data-aos="fade-down"
             >
               {/* Image du projet */}
               <div className="relative overflow-hidden">
