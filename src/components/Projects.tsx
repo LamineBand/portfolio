@@ -80,12 +80,12 @@ const Projects: React.FC = () => {
 
     {
       id: 6,
-      titre: "Site Restaurant",
+      titre: "Site Agence de transport",
       description:
-        "Site vitrine responsive pour l'agence Lamine Travel, présentant ses services et ses offres de voyages de façon claire et attrayante.",
-      technologies: ["React.js", "TypeScript", "Bootstrap"],
-      image: "/imgProjet/voy.png",
-      lienDemo: "https://agence-voyage-khaki.vercel.app/",
+        "Site vitrine responsive pour une agence de transport multi-services, spécialisée dans la vente, la location de voitures et bien d'autres.",
+      technologies: ["Next.js", "TypeScript", "Bootstrap"],
+      image: "/imgProjet/fin.png",
+      lienDemo: "https://bah-two.vercel.app/",
       lienCode: "#",
       statut: "Terminé",
     },
